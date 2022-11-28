@@ -2,14 +2,6 @@ package com.acem.demo.model;
 
 import javax.persistence.*;
 
-/attendance/today/
-{
-
-    presentStudentIds=[1,2,3,4]
-
-        }
-
-
 @Entity
 @Table(name = "STUDENTS")
 public class Student {

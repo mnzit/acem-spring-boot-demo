@@ -1,11 +1,10 @@
 package com.acem.demo.repository;
 
-import com.acem.demo.model.Student;
+import com.acem.demo.model.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
 
 @Repository
-public interface CourseRepository extends JpaRepository<Student, Long> {
+public interface CourseRepository extends JpaRepository<Course, Long> {
 }

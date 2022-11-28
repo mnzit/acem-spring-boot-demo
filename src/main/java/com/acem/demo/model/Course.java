@@ -48,12 +48,9 @@ public class Course {
     }
 
 
-
-
-
     @Override
     public String toString() {
-        return "Student{" +
+        return "Course {" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

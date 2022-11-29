@@ -2,9 +2,11 @@ package com.acem.demo.service.impl;
 
 import com.acem.demo.builder.ResponseBuilder;
 import com.acem.demo.constant.ResponseMessageConstant;
+import com.acem.demo.mapper.SubjectMapper;
 import com.acem.demo.model.Subject;
 import com.acem.demo.repository.SubjectRepository;
 import com.acem.demo.response.Response;
+import com.acem.demo.response.SubjectResponse;
 import com.acem.demo.service.SubjectService;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +17,11 @@ import java.util.Optional;
 public class SubjectServiceImpl implements SubjectService {
 
     private final SubjectRepository subjectRepository;
+    private final SubjectMapper subjectMapper;
 
-    public SubjectServiceImpl(SubjectRepository subjectRepository) {
+    public SubjectServiceImpl(SubjectRepository subjectRepository, SubjectMapper subjectMapper) {
         this.subjectRepository = subjectRepository;
+        this.subjectMapper = subjectMapper;
     }
 
     @Override
@@ -38,7 +42,8 @@ public class SubjectServiceImpl implements SubjectService {
         Response responseBody = null;
         if (optionalSubject.isPresent()) {
             Subject subject = optionalSubject.get();
-            responseBody = ResponseBuilder.success(ResponseMessageConstant.Subject.ONE, subject);
+            SubjectResponse subjectResponse = subjectMapper.map(subject);
+            responseBody = ResponseBuilder.success(ResponseMessageConstant.Subject.ONE, subjectResponse);
         } else {
             responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Subject.NOT_FOUND);
         }

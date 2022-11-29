@@ -8,9 +8,9 @@ public interface CourseService {
 
     Response getById(Long id);
 
-    Response save(Course subject);
+    Response save(Course course);
 
-    Response update(Course subject);
+    Response update(Course course);
 
     Response delete(Long id);
 }

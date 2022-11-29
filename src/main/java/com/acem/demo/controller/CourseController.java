@@ -1,17 +1,12 @@
 package com.acem.demo.controller;
 
-import com.acem.demo.model.Student;
-import com.acem.demo.repository.CourseRepository;
-import com.acem.demo.repository.StudentRepository;
 import com.acem.demo.response.Response;
 import com.acem.demo.service.CourseService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/course")
+@RequestMapping("/courses")
 public class CourseController {
 
     private final CourseService courseService;

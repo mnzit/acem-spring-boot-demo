@@ -15,7 +15,7 @@ import java.util.Optional;
 public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
-
+    Response responseBody = null;
     public CourseServiceImpl(CourseRepository courseRepository) {
         this.courseRepository = courseRepository;
     }
@@ -23,7 +23,6 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Response getAll() {
         List<Course> course = courseRepository.findAll();
-        Response responseBody = null;
         if (!course.isEmpty()) {
             responseBody = ResponseBuilder.success(ResponseMessageConstant.Course.ALL, course);
         } else {
@@ -35,7 +34,6 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Response getById(Long id) {
         Optional<Course> optionalCourse = courseRepository.findById(id);
-        Response responseBody = null;
         if (optionalCourse.isPresent()) {
             Course course = optionalCourse.get();
             responseBody = ResponseBuilder.success(ResponseMessageConstant.Course.ONE, course);
@@ -48,7 +46,6 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Response save(Course course) {
         Course savedCourse = courseRepository.save(course);
-        Response responseBody = null;
         if(course.equals(savedCourse)){
             responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.SAVED, course);
         }
@@ -62,7 +59,6 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Response update(Course course) {
         Optional<Course> optionalCourse = courseRepository.findById(course.getId());
-        Response responseBody = null;
         if (optionalCourse.isPresent()) {
             courseRepository.save(course);
             responseBody = ResponseBuilder.success(ResponseMessageConstant.Course.UPDATED, course);
@@ -76,7 +72,6 @@ public class CourseServiceImpl implements CourseService {
     public Response delete(Long id) {
         Optional<Course> optionalCourse = courseRepository.findById(id);
         Course course = optionalCourse.get();
-        Response responseBody = null;
         if(course.getId().equals(id)){
             courseRepository.deleteById(id);
             responseBody = ResponseBuilder.success(ResponseMessageConstant.Course.DELETED, course);

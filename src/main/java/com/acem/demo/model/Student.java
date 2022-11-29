@@ -9,7 +9,7 @@ public class Student {
     @Column(name="ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="NAME", length=100, nullable = false, unique = true)
+    @Column(name="NAME", length=100, nullable = false)
     private String name;
     @Column(name="EMAIL", length=100, nullable = false, unique = true)
     private String email;

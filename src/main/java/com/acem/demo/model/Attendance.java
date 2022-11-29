@@ -1,12 +1,9 @@
 package com.acem.demo.model;
-
 import javax.persistence.*;
-
 
 @Entity
 @Table(name = "ATTENDANCE")
 public class Attendance {
-
         @Id
         @Column(name="ID")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +16,6 @@ public class Attendance {
         private String courseId;
         @Column(name="DATA", length=100, nullable = false, unique = false)
         private String data;
-
-
 
     public Attendance(Long id, String name, String batchId, String courseId, String data) {
             this.id = id;
@@ -39,17 +34,14 @@ public class Attendance {
         public void setId(Long id) {
             this.id = id;
         }
-
         public String getName() {
             return name;
         }
         public void setName(String name) {
         this.name = name;
     }
-
         public String getBatchId() { return batchId; }
         public void setBatchId(String batchId) { this.batchId = batchId; }
-
         public String getCourseId() { return courseId; }
         public void setCourseId(String batchId) { this.batchId = courseId; }
         public String getData() {
@@ -58,8 +50,6 @@ public class Attendance {
         public void setData(String data) {
             this.data = data;
         }
-
-
         @Override
         public String toString() {
             return "Student{" +

@@ -1,6 +1,4 @@
 package com.acem.demo.service.impl;
-
-
 import com.acem.demo.builder.ResponseBuilder;
 import com.acem.demo.constant.ResponseMessageConstant;
 import com.acem.demo.model.Attendance;
@@ -8,10 +6,8 @@ import com.acem.demo.repository.AttendanceRepository;
 import com.acem.demo.response.Response;
 import com.acem.demo.service.AttendanceService;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
-
 
 @Service
 public class AttendanceServiceImpl implements AttendanceService {

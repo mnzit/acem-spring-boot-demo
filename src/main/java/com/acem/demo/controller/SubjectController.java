@@ -1,6 +1,5 @@
 package com.acem.demo.controller;
 
-import com.acem.demo.model.Student;
 import com.acem.demo.model.Subject;
 import com.acem.demo.response.Response;
 import com.acem.demo.service.SubjectService;

@@ -1,7 +1,17 @@
 package com.acem.demo.model;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "COURSE")
 public class Course {
@@ -9,53 +19,18 @@ public class Course {
     @Column(name="ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name="NAME", length=100, nullable = false, unique = true)
     private String name;
-    @Column(name="DESCRIPTION", length=100, nullable = false, unique = true)
+
+    @Column(name="ACRONYM", length=10, nullable = false, unique = true)
+    private String acronym;
+
+    @Column(name="DESCRIPTION", length=100, nullable = false)
     private String description;
 
-    public Course() {
-    }
-
-    public Course(Long id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Course {" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
-
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
+    private List<CourseSubject> courseSubjects;
 
 }

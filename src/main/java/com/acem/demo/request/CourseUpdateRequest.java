@@ -3,8 +3,10 @@ package com.acem.demo.request;
 
 import javax.validation.constraints.NotBlank;
 
-public class CourseSaveRequest {
+public class CourseUpdateRequest {
 
+
+    private long id;
     @NotBlank
     private String name;
     @NotBlank
@@ -12,8 +14,16 @@ public class CourseSaveRequest {
     @NotBlank
     private String description;
 
-    public  CourseSaveRequest(){
+    public CourseUpdateRequest(){
 
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {

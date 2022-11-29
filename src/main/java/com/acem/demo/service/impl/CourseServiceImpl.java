@@ -2,8 +2,10 @@ package com.acem.demo.service.impl;
 
 import com.acem.demo.builder.ResponseBuilder;
 import com.acem.demo.constant.ResponseMessageConstant;
+import com.acem.demo.mapper.CourseMapper;
 import com.acem.demo.model.Course;
 import com.acem.demo.repository.CourseRepository;
+import com.acem.demo.response.CourseResponse;
 import com.acem.demo.response.Response;
 import com.acem.demo.service.CourseService;
 import org.springframework.stereotype.Service;
@@ -15,9 +17,11 @@ import java.util.Optional;
 public class CourseServiceImpl implements CourseService {
 
     private final CourseRepository courseRepository;
+    private final CourseMapper courseMapper;
 
-    public CourseServiceImpl(CourseRepository courseRepository) {
+    public CourseServiceImpl(CourseRepository courseRepository, CourseMapper courseMapper) {
         this.courseRepository = courseRepository;
+        this.courseMapper = courseMapper;
     }
 
     @Override
@@ -38,7 +42,8 @@ public class CourseServiceImpl implements CourseService {
         Response responseBody = null;
         if (optionalCourse.isPresent()) {
             Course course = optionalCourse.get();
-            responseBody = ResponseBuilder.success(ResponseMessageConstant.Course.ONE, course);
+            CourseResponse courseResponse = courseMapper.map(course);
+            responseBody = ResponseBuilder.success(ResponseMessageConstant.Course.ONE, courseResponse);
         } else {
             responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Course.NOT_FOUND);
         }
@@ -54,6 +59,7 @@ public class CourseServiceImpl implements CourseService {
         }
         else {
             responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Course.NOT_SAVED);
+
         }
         return responseBody;
     }
@@ -77,10 +83,10 @@ public class CourseServiceImpl implements CourseService {
         Optional<Course> optionalCourse = courseRepository.findById(id);
         Course course = optionalCourse.get();
         Response responseBody = null;
-        if(course.getId().equals(id)){
+        if (course.getId().equals(id)) {
             courseRepository.deleteById(id);
             responseBody = ResponseBuilder.success(ResponseMessageConstant.Course.DELETED, course);
-        }else {
+        } else {
             responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Course.NOT_DELETED);
         }
         return responseBody;

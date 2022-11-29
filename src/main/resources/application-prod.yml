@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://dpg-ce2t9lha6gdpj35frcqg-a.singapore-postgres.render.com/college
+    username: college_user
+    password: C5GZh72BRcBn0IEntqgVjTaXaoXpcAL2
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+

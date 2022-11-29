@@ -14,20 +14,20 @@ public class Attendance {
         @Column(name="NAME", length=100, nullable = false, unique = true)
         private String name;
         @Column(name="BATCH_ID", length=100, nullable = false, unique = false)
-        private int batchId;
+        private String batchId;
         @Column(name="COURSE_ID", length=100, nullable = false, unique = false)
-        private int courseId;
+        private String courseId;
         @Column(name="DATA", length=100, nullable = false, unique = false)
-        private Boolean attendance;
+        private String data;
 
 
 
-    public Attendance(Long id, String name, int batchId, int courseId, Boolean attendance) {
+    public Attendance(Long id, String name, String batchId, String courseId, String data) {
             this.id = id;
             this.name = name;
             this.batchId = batchId;
             this.courseId = courseId;
-            this.attendance = attendance;
+            this.data = data;
         }
 
     public Attendance() {
@@ -47,16 +47,16 @@ public class Attendance {
         this.name = name;
     }
 
-        public int getBatchId() { return batchId; }
-        public void setBatchId(int batchId) { this.batchId = batchId; }
+        public String getBatchId() { return batchId; }
+        public void setBatchId(String batchId) { this.batchId = batchId; }
 
-        public int getCourseId() { return courseId; }
-        public void setCourseId(int batchId) { this.batchId = courseId; }
-        public Boolean getAttendance() {
-            return attendance;
+        public String getCourseId() { return courseId; }
+        public void setCourseId(String batchId) { this.batchId = courseId; }
+        public String getData() {
+            return data;
         }
-        public void setAttendance(Boolean attendance) {
-            this.attendance = attendance;
+        public void setData(String data) {
+            this.data = data;
         }
 
 
@@ -67,7 +67,7 @@ public class Attendance {
                     ", name='" + name + '\'' +
                     ", batch id='" + batchId + '\'' +
                     ", course id='" + courseId + '\'' +
-                    ", attendance='" + String.valueOf(this.getAttendance()) + '\'' +
+                    ", attendance='" + String.valueOf(this.getData()) + '\'' +
                     '}';
         }
 }

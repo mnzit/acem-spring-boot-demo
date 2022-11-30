@@ -54,10 +54,12 @@ public class CourseServiceImpl implements CourseService {
     public Response save(Course course) {
         Course savedCourse = courseRepository.save(course);
         Response responseBody = null;
-        if (course.equals(savedCourse)) {
-            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.SAVED, course);
-        } else {
-            responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Student.NOT_SAVED);
+        if(course.equals(savedCourse)){
+            responseBody = ResponseBuilder.success(ResponseMessageConstant.Course.SAVED, course);
+        }
+        else {
+            responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Course.NOT_SAVED);
+
         }
         return responseBody;
     }

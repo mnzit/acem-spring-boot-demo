@@ -2,7 +2,7 @@ package com.acem.demo.utils;
 
 import org.modelmapper.ModelMapper;
 
-public class ModalMapperUtil {
+public class ModelMapperUtil {
 
     private static ModelMapper modelMapper = null;
 

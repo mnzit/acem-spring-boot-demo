@@ -16,23 +16,23 @@ public class AcemSpringBootDemoApplication {
     }
 
 
-    @Bean
-    @Profile("dev")
-    public Map<String, String> devBean(){
-        System.out.println("bean1 created");
-
-        Map<String, String> map = new HashMap<>();
-        map.put("data", "1");
-        return map;
-    }
-
-    @Bean
-    @Profile("prod")
-    public Map<String, String> prodBean(){
-        System.out.println("bean2 created");
-
-        Map<String, String> map = new HashMap<>();
-        map.put("data", "2");
-        return map;
-    }
+//    @Bean
+//    @Profile("dev")
+//    public Map<String, String> devBean(){
+//        System.out.println("bean1 created");
+//
+//        Map<String, String> map = new HashMap<>();
+//        map.put("data", "1");
+//        return map;
+//    }
+//
+//    @Bean
+//    @Profile("prod")
+//    public Map<String, String> prodBean(){
+//        System.out.println("bean2 created");
+//
+//        Map<String, String> map = new HashMap<>();
+//        map.put("data", "2");
+//        return map;
+//    }
 }

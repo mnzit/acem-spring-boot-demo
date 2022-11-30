@@ -19,8 +19,12 @@ public class Course {
     @Column(name="ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name="NAME", length=100, nullable = false, unique = true)
     private String name;
+
+    @Column(name="ACRONYM", length=10, nullable = false, unique = true)
+    private String acronym;
 
     @Column(name="DESCRIPTION", length=100, nullable = false)
     private String description;

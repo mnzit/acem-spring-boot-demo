@@ -3,7 +3,7 @@ package com.acem.demo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "SUBJECT")
+@Table(name = "SUBJECTS")
 public class Subject {
     @Id
     @Column(name="ID")

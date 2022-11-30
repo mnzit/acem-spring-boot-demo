@@ -60,4 +60,13 @@ public class Response implements Serializable {
         this.error = error;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Response{" +
+                "statusCode=" + statusCode +
+                ", success=" + success +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

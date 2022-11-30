@@ -7,15 +7,11 @@ import com.acem.demo.model.Course;
 import com.acem.demo.repository.CourseRepository;
 import com.acem.demo.response.CourseResponse;
 import com.acem.demo.response.Response;
-import com.acem.demo.response.SubjectResponse;
 import com.acem.demo.service.CourseService;
-import com.acem.demo.utils.ModalMapperUtil;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class CourseServiceImpl implements CourseService {

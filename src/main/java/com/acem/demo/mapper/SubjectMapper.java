@@ -1,6 +1,6 @@
 package com.acem.demo.mapper;
 
-import com.acem.demo.model.Subject;
+import com.acem.demo.entity.Subject;
 import com.acem.demo.response.SubjectResponse;
 import org.springframework.stereotype.Component;
 

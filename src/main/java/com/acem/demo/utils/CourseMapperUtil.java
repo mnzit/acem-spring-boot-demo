@@ -1,6 +1,6 @@
 package com.acem.demo.utils;
 
-import com.acem.demo.model.Course;
+import com.acem.demo.entity.Course;
 import com.acem.demo.request.CourseSaveRequest;
 import com.acem.demo.request.CourseUpdateRequest;
 

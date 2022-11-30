@@ -3,7 +3,7 @@ package com.acem.demo.service.impl;
 import com.acem.demo.builder.ResponseBuilder;
 import com.acem.demo.constant.ResponseMessageConstant;
 import com.acem.demo.mapper.SubjectMapper;
-import com.acem.demo.model.Subject;
+import com.acem.demo.entity.Subject;
 import com.acem.demo.repository.SubjectRepository;
 import com.acem.demo.response.Response;
 import com.acem.demo.response.SubjectResponse;

@@ -1,6 +1,6 @@
 package com.acem.demo.mapper;
 
-import com.acem.demo.model.Course;
+import com.acem.demo.entity.Course;
 import com.acem.demo.response.CourseResponse;
 import com.acem.demo.response.SubjectResponse;
 import org.springframework.stereotype.Component;
@@ -17,16 +17,16 @@ public class CourseMapper {
                 .name(course.getName())
                 .description(course.getDescription());
 
-        if (!course.getCourseSubjects().isEmpty()) {
+        if (!course.getSubjects().isEmpty()) {
 
             List<SubjectResponse> subjectResponses = course
-                .getCourseSubjects()
+                .getSubjects()
                 .stream()
-                .map(courseSubject ->
+                .map(subject ->
                     SubjectResponse
                         .builder()
-                        .code(courseSubject.getSubject().getCode())
-                        .name(courseSubject.getSubject().getName())
+                        .code(subject.getCode())
+                        .name(subject.getName())
                         .build()
                     ).collect(Collectors.toList());
 

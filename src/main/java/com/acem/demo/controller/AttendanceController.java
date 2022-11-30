@@ -1,9 +1,10 @@
 package com.acem.demo.controller;
 
-import com.acem.demo.model.Attendance;
 import com.acem.demo.repository.AttendanceRepository;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.acem.demo.request.AttendanceRequest;
+import com.acem.demo.response.Response;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +20,27 @@ public class AttendanceController {
         this.attendanceRepository = attendanceRepository;
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Attendance> students() {
-        return attendanceRepository.findAll();
+    public Response attendance(@Validated @RequestBody List<AttendanceRequest> request){
+            return null;
     }
+
+    /*
+    30
+
+    {
+    "ABSENT": 0,
+    "PRESENT": 10,
+    "SICK": 1,
+    "LEAVE": 1,
+    "OPEN": 12
+    }
+
+     */
+
+//    public Response searchAttendance(Long id, Date from, Date to){
+//
+//    }
+
+
+
 }

@@ -1,6 +1,6 @@
 package com.acem.demo.service;
 
-import com.acem.demo.model.Subject;
+import com.acem.demo.entity.Subject;
 import com.acem.demo.response.Response;
 
 public interface SubjectService {

@@ -1,6 +1,6 @@
 package com.acem.demo.service;
 
-import com.acem.demo.model.Course;
+import com.acem.demo.entity.Course;
 import com.acem.demo.response.Response;
 
 public interface CourseService {

@@ -1,7 +1,7 @@
 package com.acem.demo.service;
 
 
-import com.acem.demo.model.Student;
+import com.acem.demo.entity.User;
 import com.acem.demo.response.Response;
 
 public interface StudentService {
@@ -12,9 +12,9 @@ public interface StudentService {
 
     Response getByEmailAddress(String emailAddress);
 
-    Response save(Student student);
+    Response save(User user);
 
-    Response update(Student student);
+    Response update(User user);
 
     Response delete(Long id);
 

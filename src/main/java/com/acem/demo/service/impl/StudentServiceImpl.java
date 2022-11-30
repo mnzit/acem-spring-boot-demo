@@ -3,7 +3,7 @@ package com.acem.demo.service.impl;
 
 import com.acem.demo.builder.ResponseBuilder;
 import com.acem.demo.constant.ResponseMessageConstant;
-import com.acem.demo.model.Student;
+import com.acem.demo.entity.User;
 import com.acem.demo.repository.StudentRepository;
 import com.acem.demo.response.Response;
 import com.acem.demo.service.StudentService;
@@ -23,10 +23,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Response getAll() {
-        List<Student> students = studentRepository.findAll();
+        List<User> users = studentRepository.findAll();
         Response responseBody = null;
-        if (!students.isEmpty()) {
-            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.ALL, students);
+        if (!users.isEmpty()) {
+            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.ALL, users);
         } else {
             responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Student.NOT_FOUND);
         }
@@ -35,11 +35,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Response getById(Long id) {
-        Optional<Student> optionalStudent = studentRepository.findById(id);
+        Optional<User> optionalStudent = studentRepository.findById(id);
         Response responseBody = null;
         if (optionalStudent.isPresent()) {
-            Student student = optionalStudent.get();
-            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.ONE, student);
+            User user = optionalStudent.get();
+            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.ONE, user);
         } else {
             responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Student.NOT_FOUND);
         }
@@ -48,11 +48,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Response getByEmailAddress(String emailAddress) {
-        Optional<Student> optionalStudent = studentRepository.findByEmail(emailAddress);
+        Optional<User> optionalStudent = studentRepository.findByEmail(emailAddress);
         Response responseBody = null;
         if (optionalStudent.isPresent()) {
-            Student student = optionalStudent.get();
-            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.ONE, student);
+            User user = optionalStudent.get();
+            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.ONE, user);
 
         } else {
             responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Student.NOT_FOUND);
@@ -62,11 +62,11 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    public Response save(Student student) {
-        Student savedStudent = studentRepository.save(student);
+    public Response save(User user) {
+        User savedUser = studentRepository.save(user);
         Response responseBody = null;
-        if(student.equals(savedStudent)){
-            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.SAVED, student);
+        if(user.equals(savedUser)){
+            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.SAVED, user);
         }
         else {
             responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Student.NOT_SAVED);
@@ -75,12 +75,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Response update(Student student) {
-        Optional<Student> optionalStudent = studentRepository.findById(student.getId());
+    public Response update(User user) {
+        Optional<User> optionalStudent = studentRepository.findById(user.getId());
         Response responseBody = null;
         if (optionalStudent.isPresent()) {
-            studentRepository.save(student);
-            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.UPDATED, student);
+            studentRepository.save(user);
+            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.UPDATED, user);
         } else {
             responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Student.NOT_UPDATED);
         }
@@ -89,12 +89,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Response delete(Long id) {
-        Optional<Student> optionalStudent = studentRepository.findById(id);
-        Student student = optionalStudent.get();
+        Optional<User> optionalStudent = studentRepository.findById(id);
+        User user = optionalStudent.get();
         Response responseBody = null;
-        if(student.getId().equals(id)){
+        if(user.getId().equals(id)){
             studentRepository.deleteById(id);
-            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.DELETED, student);
+            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.DELETED, user);
         }else {
             responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Student.NOT_DELETED);
         }

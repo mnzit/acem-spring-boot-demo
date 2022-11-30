@@ -1,6 +1,6 @@
 package com.acem.demo.controller;
 
-import com.acem.demo.model.Student;
+import com.acem.demo.entity.User;
 import com.acem.demo.repository.StudentRepository;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ public class StudentController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Student> students() {
+    public List<User> students() {
         return studentRepository.findAll();
     }
 }

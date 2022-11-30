@@ -1,16 +1,16 @@
 package com.acem.demo.request.mapper;
 
-import com.acem.demo.model.Subject;
+import com.acem.demo.entity.Subject;
 import com.acem.demo.request.SubjectSaveRequest;
 import com.acem.demo.request.SubjectUpdateRequest;
-import com.acem.demo.utils.ModalMapperUtil;
+import com.acem.demo.utils.ModelMapperUtil;
 
 public class SubjectMapperUtil {
         public static Subject mapSubject(SubjectSaveRequest subjectSaveRequest) {
-            return ModalMapperUtil.map(subjectSaveRequest, Subject.class);
+            return ModelMapperUtil.map(subjectSaveRequest, Subject.class);
         }
 
         public static Subject mapSubject(SubjectUpdateRequest subjectUpdateRequest) {
-            return ModalMapperUtil.map(subjectUpdateRequest, Subject.class);
+            return ModelMapperUtil.map(subjectUpdateRequest, Subject.class);
         }
 }

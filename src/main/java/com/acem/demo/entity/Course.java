@@ -27,10 +27,6 @@ public class Course extends CommonEntity {
     @Column(name="DESCRIPTION", length=100, nullable = false)
     private String description;
 
-//    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
-//    @Fetch(FetchMode.SUBSELECT)
-//    private List<CourseSubject> courseSubjects;
-
     @ManyToMany
     @JoinTable(
         name="COURSE_SUBJECTS",

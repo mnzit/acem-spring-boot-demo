@@ -3,6 +3,8 @@ package com.acem.demo.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -21,27 +23,28 @@ public class CommonEntity implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    protected Long id;
 
-    @CreatedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="CREATED_DATE", updatable = false)
-    private Date createdDate;
+    @CreationTimestamp
+    @Column(name = "CREATED_DATE")
+    protected Date createdDate;
 
-    @LastModifiedDate
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="MODIFIED_DATE")
-    private Date modifiedDate;
+    @UpdateTimestamp
+    @Column(name = "MODIFIED_DATE")
+    protected Date modifiedDate;
 
     @CreatedBy
-    @JoinColumn(name="CREATED_BY", referencedColumnName = "ID", updatable = false)
+    @JoinColumn(name = "CREATED_BY", referencedColumnName = "ID", updatable = false)
     @ManyToOne
-    private User createdBy;
+    protected User createdBy;
 
     @LastModifiedBy
     @ManyToOne
-    @JoinColumn(name="MODIFIED_BY", referencedColumnName = "ID")
-    private User modifiedBy;
+    @JoinColumn(name = "MODIFIED_BY", referencedColumnName = "ID")
+    protected User modifiedBy;
+
+    @Column(name = "STATUS", nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
+    protected Boolean status; // 0, 1
 
 
     // ROLE - STUDENT, ADMIN, TEACHER, ACCOUNTANT, SYSTEM

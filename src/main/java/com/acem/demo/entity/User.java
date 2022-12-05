@@ -4,8 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Getter
 @Setter
@@ -23,4 +25,8 @@ public class User extends CommonEntity {
     @Column(name="CONTACT_NO", length=100, nullable = false, unique = true)
     private String contactNo;
 
+
+    public User(Long id) {
+        this.id = id;
+    }
 }

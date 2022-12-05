@@ -23,9 +23,12 @@ public class Attendance extends CommonEntity {
     private User user;
 
     @Column(name = "STATUS", columnDefinition = "VARCHAR(100) DEFAULT 'ABSENT'")
+    @Enumerated(EnumType.STRING)
     private AttendanceStatus status;
 
-
-
+    public Attendance(Long id, AttendanceStatus status) {
+        this.user = new User(id);
+        this.status = status;
+    }
 }
 

@@ -3,7 +3,6 @@ package com.acem.demo.service.impl;
 import com.acem.demo.builder.ResponseBuilder;
 import com.acem.demo.constant.ResponseMessageConstant;
 import com.acem.demo.entity.Attendance;
-import com.acem.demo.entity.Holiday;
 import com.acem.demo.repository.AttendanceRepository;
 import com.acem.demo.request.AttendanceRequest;
 import com.acem.demo.response.Response;
@@ -32,7 +31,7 @@ public class AttendanceServiceImpl implements AttendanceService {
             if(!holidayUtil.isHoliday()) {
                 List<Attendance> attendances = request
                         .stream()
-                        .map(attendanceRequest -> new Attendance(attendanceRequest.getId(), attendanceRequest.getStatus()))
+                        .map(attendanceRequest -> new Attendance(attendanceRequest.getId(), attendanceRequest.getState()))
                         .collect(Collectors.toList());
 
                 attendanceRepository.saveAll(attendances);

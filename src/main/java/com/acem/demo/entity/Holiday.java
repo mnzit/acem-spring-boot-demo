@@ -1,6 +1,5 @@
 package com.acem.demo.entity;
 
-import com.acem.demo.entity.enums.AttendanceStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

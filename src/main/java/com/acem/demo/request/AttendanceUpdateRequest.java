@@ -1,6 +1,6 @@
 package com.acem.demo.request;
 
-import com.acem.demo.entity.enums.AttendanceStatus;
+import com.acem.demo.entity.enums.AttendanceState;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,5 +16,5 @@ public class AttendanceUpdateRequest implements Serializable {
 
     private Long id;
     private Date date;
-    private AttendanceStatus status;
+    private AttendanceState status;
 }

@@ -1,6 +1,6 @@
 package com.acem.demo.request;
 
-import com.acem.demo.entity.enums.AttendanceState;
+import com.acem.demo.exception.enums.AttendanceState;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

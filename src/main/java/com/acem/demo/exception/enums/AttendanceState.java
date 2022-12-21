@@ -1,4 +1,4 @@
-package com.acem.demo.entity.enums;
+package com.acem.demo.exception.enums;
 
 public enum AttendanceState {
     PRESENT,

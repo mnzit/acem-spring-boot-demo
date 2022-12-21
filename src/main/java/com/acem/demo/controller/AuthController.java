@@ -5,8 +5,10 @@ import com.acem.demo.entity.User;
 import com.acem.demo.repository.UserRepository;
 import com.acem.demo.request.AuthRequest;
 import com.acem.demo.response.Response;
-import com.acem.demo.service.UserService;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("users")
 public class AuthController {
 
     private UserRepository userRepository;
@@ -29,24 +31,48 @@ public class AuthController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response login(@RequestBody @Validated AuthRequest request) {
+    @RequestMapping("auth")
+    public ResponseEntity<Response> login(@RequestBody @Validated AuthRequest request) {
 
         Optional<User> optionalUser = userRepository.findByEmail(request.getEmail());
 
-        if(optionalUser.isPresent()){
+        if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             String password = request.getPassword();
             String encodedPassword = user.getPassword();
 
-            boolean isPasswordMatched = passwordEncoder.matches(password,encodedPassword);
+            boolean isPasswordMatched = passwordEncoder.matches(password, encodedPassword);
 
-            if(isPasswordMatched){
-                return ResponseBuilder.success("Login successful");
-            }else{
-                return ResponseBuilder.failure("Email/Password is incorrect");
+            if (isPasswordMatched) {
+                Date issueDate = new Date();
+                Date expireDate = new Date(issueDate.getTime() + 60 * 60 * 1000);
+                String token = Jwts
+                        .builder()
+                        .setIssuedAt(issueDate)
+                        .setExpiration(expireDate)
+                        .signWith(SignatureAlgorithm.HS256, "OnEwiPYQVLVRMhOD1n1lKafRge0k9vABwacbk9ukF2iWRFhL3HiM8Phy5T4MZWbq")
+                        .compact();
+
+                Response response = ResponseBuilder.success("Login successful");
+
+
+                return ResponseEntity
+                        .status(response.getStatusCode())
+                        .header("Authorization", "Bearer " + token)
+                        .body(response);
+
+            } else {
+                Response response = ResponseBuilder.failure("Email/Password is incorrect");
+                return ResponseEntity
+                        .status(response.getStatusCode())
+                        .body(response);
+
             }
-        }else{
-            return ResponseBuilder.failure("Email/Password is incorrect");
+        } else {
+            Response response = ResponseBuilder.failure("Email/Password is incorrect");
+            return ResponseEntity
+                    .status(response.getStatusCode())
+                    .body(response);
         }
     }
 }

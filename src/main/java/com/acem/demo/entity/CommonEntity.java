@@ -1,5 +1,6 @@
 package com.acem.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,11 +34,13 @@ public class CommonEntity implements Serializable {
     @Column(name = "MODIFIED_DATE")
     protected Date modifiedDate;
 
+    @JsonIgnore
     @CreatedBy
     @JoinColumn(name = "CREATED_BY", referencedColumnName = "ID", updatable = false)
     @ManyToOne
     protected User createdBy;
 
+    @JsonIgnore
     @LastModifiedBy
     @ManyToOne
     @JoinColumn(name = "MODIFIED_BY", referencedColumnName = "ID")
@@ -47,13 +50,5 @@ public class CommonEntity implements Serializable {
     protected Boolean status; // 0, 1
 
 
-    // ROLE - STUDENT, ADMIN, TEACHER, ACCOUNTANT, SYSTEM
-    /*
-    AUTHORITY
-        ADMIN -> USER = CREATE, UPDATE, DELETE, VIEW
-              -> COURSE = CREATE, UPDATE, DELETE, VIEW
-              -> SUBJECT = CREATE, UPDATE, DELETE, VIEW
-      TEACHER -> ATTENDANCE = CREATE, UPDATE, DELETE, VIEW
 
-     */
 }

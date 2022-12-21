@@ -1,26 +1,36 @@
 package com.acem.demo.controller;
 
-import com.acem.demo.entity.User;
-import com.acem.demo.repository.StudentRepository;
+import com.acem.demo.request.UserSaveRequest;
+import com.acem.demo.response.Response;
+import com.acem.demo.service.UserService;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("students")
-public class StudentController {
+@RequestMapping("users")
+public class UserController {
 
-    private final StudentRepository studentRepository;
+    private UserService userService;
 
-    public StudentController(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<User> students() {
-        return studentRepository.findAll();
+    public Response users() {
+        return userService.getAll();
     }
+
+
+    @PostMapping
+    public Response save(@RequestBody @Validated UserSaveRequest request) {
+        return userService.save(request);
+    }
+
+    @PutMapping
+    public String update() {
+        return "This is user put request";
+    }
+
 }

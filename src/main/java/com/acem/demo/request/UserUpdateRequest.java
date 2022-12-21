@@ -3,7 +3,7 @@ package com.acem.demo.request;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-public class StudentUpdateRequest {
+public class UserUpdateRequest {
 
     private Long id;
     @NotBlank
@@ -14,7 +14,7 @@ public class StudentUpdateRequest {
     @NotBlank
     private String contactNo;
 
-    public StudentUpdateRequest() {
+    public UserUpdateRequest() {
     }
 
     public String getName() {

@@ -14,15 +14,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserSaveRequest implements Serializable {
-
-    @NotBlank
-    private String firstName;
-
-    private String middleName;
-
-    @NotBlank
-    private String lastName;
+public class AuthRequest implements Serializable {
 
     @NotBlank
     @Email
@@ -30,10 +22,4 @@ public class UserSaveRequest implements Serializable {
 
     @NotBlank
     private String password;
-
-    @NotBlank
-    private String contactNo;
-
-    @NotNull
-    private Long roleId;
 }

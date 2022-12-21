@@ -57,4 +57,16 @@ public interface ResponseMessageConstant {
         String DELETED = "Subject deleted successfully";
     }
 
+    interface Holiday {
+        String ONE = "Holiday fetched successfully";
+        String ALL = "Holidays fetched successfully";
+        String NOT_FOUND = "Holidays not found";
+        String SAVED = "Holiday saved successfully";
+        String UPDATED = "Holiday updated successfully";
+        String NOT_SAVED = "Holiday not saved";
+        String NOT_UPDATED = "Holiday not updated";
+        String NOT_DELETED = "Holiday not deleted";
+        String DELETED = "Holiday deleted successfully";
+    }
+
 }

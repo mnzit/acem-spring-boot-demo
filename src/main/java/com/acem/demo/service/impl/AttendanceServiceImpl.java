@@ -7,7 +7,7 @@ import com.acem.demo.repository.AttendanceRepository;
 import com.acem.demo.request.AttendanceRequest;
 import com.acem.demo.response.Response;
 import com.acem.demo.service.AttendanceService;
-import com.acem.demo.utils.HolidayUtil;
+import com.acem.demo.utils.holiday.HolidayUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

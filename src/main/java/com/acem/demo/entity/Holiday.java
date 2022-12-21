@@ -1,8 +1,6 @@
 package com.acem.demo.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +10,8 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 @Table(name = "HOLIDAYS")
 public class Holiday extends CommonEntity {
 

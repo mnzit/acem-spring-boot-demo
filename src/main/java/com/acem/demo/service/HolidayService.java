@@ -12,6 +12,6 @@ public interface HolidayService {
 
     Response getById(Long id);
 
-    Response saveAll(List<Holiday> holidayList);
+    Response saveAll();
 
 }

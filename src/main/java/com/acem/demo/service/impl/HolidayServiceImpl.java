@@ -6,7 +6,10 @@ import com.acem.demo.entity.Holiday;
 import com.acem.demo.repository.HolidayRepository;
 import com.acem.demo.response.Response;
 import com.acem.demo.service.HolidayService;
+import com.acem.demo.utils.holiday.HolidayScrapper;
+import org.joda.time.DateTime;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class HolidayServiceImpl implements HolidayService {
@@ -35,7 +38,9 @@ public class HolidayServiceImpl implements HolidayService {
     }
 
     @Override
-    public Response saveAll(List<Holiday> holidayList) {
+    public Response saveAll() {
+        DateTime dateTime = new DateTime();
+        List<Holiday> holidayList = new HolidayScrapper().scrap(dateTime.getYear());
         holidayRepository.saveAll(holidayList);
         Response responseBody = null;
         try {

@@ -13,7 +13,7 @@ import java.util.*;
 
 public class HolidayScrapper{
 
-    public List<Holiday> scrap(String year) {
+    public List<Holiday> scrap(Integer year) {
         List<Holiday> holidayList = new ArrayList<>();
         Document doc = getDoc(buildURL(year));
         Elements tableElements = doc.select(HolidayConstants.TABLE);
@@ -47,11 +47,11 @@ public class HolidayScrapper{
         return doc;
     }
 
-    public String buildURL(String year){
+    public String buildURL(Integer year){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(HolidayConstants.URL);
         try{
-            Long.parseLong(year);
+//            Long.parseLong(year);
             stringBuilder.append(year);
         }catch (NumberFormatException ex){
             System.out.println("NumberFormatException occurred. " + ex.getMessage());

@@ -34,12 +34,6 @@ public class HolidayUtil {
         return holiday != null;
     }
 
-    public static List<Holiday> findPublicHolidays(String year){
-        HolidayScrapper scrapper = new HolidayScrapper();
-
-        return scrapper.scrap(year);
-    }
-
     public static Date toDate(String date){
         Date date1 = null;
         try{

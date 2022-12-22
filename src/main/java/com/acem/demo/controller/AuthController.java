@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.crypto.spec.SecretKeySpec;
+import java.security.SecureRandom;
 import java.util.Date;
 import java.util.Optional;
 
@@ -46,11 +48,12 @@ public class AuthController {
             if (isPasswordMatched) {
                 Date issueDate = new Date();
                 Date expireDate = new Date(issueDate.getTime() + 60 * 60 * 1000);
+                SecretKeySpec secretKey = new SecretKeySpec("123456789123456789123456789asdfg".getBytes(), "HmacSHA256");
                 String token = Jwts
                         .builder()
                         .setIssuedAt(issueDate)
                         .setExpiration(expireDate)
-                        .signWith(SignatureAlgorithm.HS256, "OnEwiPYQVLVRMhOD1n1lKafRge0k9vABwacbk9ukF2iWRFhL3HiM8Phy5T4MZWbq")
+                        .signWith(secretKey)
                         .compact();
 
                 Response response = ResponseBuilder.success("Login successful");
@@ -74,5 +77,12 @@ public class AuthController {
                     .status(response.getStatusCode())
                     .body(response);
         }
+    }
+
+    private static byte[] generateRandomBytes(final int size) {
+        SecureRandom secureRandom = new SecureRandom();
+        final byte[] key = new byte[size];
+        secureRandom.nextBytes(key);
+        return key;
     }
 }

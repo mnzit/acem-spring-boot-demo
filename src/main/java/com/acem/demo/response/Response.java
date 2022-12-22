@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class git Response implements Serializable {
+public class Response implements Serializable {
 
     private Integer statusCode;
     private Boolean success;

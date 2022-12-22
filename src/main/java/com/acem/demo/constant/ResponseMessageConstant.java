@@ -42,6 +42,7 @@ public interface ResponseMessageConstant {
     }
 
     String SERVER_ERROR = "Server Error";
+    String UNAUTHORIZED = "Unauthorized";
     String INVALID_PATH_PARAMETER = "Not a valid request";
     String INVALID_REQUEST_BODY = "Not a valid request";
 

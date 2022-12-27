@@ -25,8 +25,8 @@ public class UserController {
     }
 
     @PreAuthorize("hasAuthority('CREATE_USER')")
-    @PostMapping(value ="create", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String created() {
-        return "Created";
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response save(@RequestBody @Validated UserSaveRequest request) {
+        return userService.save(request);
     }
 }

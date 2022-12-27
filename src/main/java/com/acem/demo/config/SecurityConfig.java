@@ -46,11 +46,11 @@ public class SecurityConfig {
 
         http
                 .csrf()
-                .and()
+                .disable()
                 .httpBasic()
-                .and()
+                .disable()
                 .formLogin()
-                .and()
+                .disable()
                 .cors()
                 .disable()
                 .exceptionHandling()

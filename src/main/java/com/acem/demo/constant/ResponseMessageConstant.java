@@ -13,7 +13,6 @@ public interface ResponseMessageConstant {
         String NOT_DELETED = "Student not deleted";
         String DELETED = "Student deleted successfully";
     }
-
     interface Course {
         String ONE = "Course fetched successfully";
         String ALL = "Courses fetched successfully";

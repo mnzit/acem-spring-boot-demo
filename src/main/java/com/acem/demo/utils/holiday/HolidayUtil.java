@@ -1,6 +1,7 @@
 package com.acem.demo.utils.holiday;
 
 import com.acem.demo.constant.HolidayConstants;
+import com.acem.demo.dto.HolidayMap;
 import com.acem.demo.entity.Holiday;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Component;
@@ -8,16 +9,14 @@ import org.springframework.stereotype.Component;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 @Component
 public class HolidayUtil {
 
-    private Map<Date, Holiday> dateHolidayMap;
+    private HolidayMap holidayMap;
 
-    public HolidayUtil(Map<Date, Holiday> dateHolidayMap) {
-        this.dateHolidayMap = dateHolidayMap;
+    public HolidayUtil(HolidayMap holidayMap) {
+        this.holidayMap = holidayMap;
     }
 
     public Boolean isHoliday(){
@@ -30,7 +29,7 @@ public class HolidayUtil {
             return true;
         }
 
-        Holiday holiday = dateHolidayMap.get(today);
+        Holiday holiday = holidayMap.getHolidayMap().get(today);
         return holiday != null;
     }
 

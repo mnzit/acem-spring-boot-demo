@@ -3,13 +3,14 @@ package com.acem.demo.utils.holiday;
 
 import com.acem.demo.constant.HolidayConstants;
 import com.acem.demo.entity.Holiday;
-import com.acem.demo.utils.holiday.HolidayUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class HolidayScrapper{
 
@@ -21,7 +22,6 @@ public class HolidayScrapper{
         String temp1, temp2;
 
         for(Element row: tableElements){
-            //map first two element of the row.
             temp1 = row.select("td").get(0).text() + " " + year;
             temp2 = row.select("td").get(2).text() + " " + year;
             Date date = HolidayUtil.toDate(temp1);

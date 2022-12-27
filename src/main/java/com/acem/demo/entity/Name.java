@@ -2,10 +2,12 @@ package com.acem.demo.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
 @Embeddable
+@ToString
 @Getter
 @Setter
 public class Name implements Serializable {

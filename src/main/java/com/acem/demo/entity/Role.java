@@ -1,9 +1,6 @@
 package com.acem.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,6 +17,7 @@ import java.util.List;
 
 */
 @Getter
+@ToString
 @Setter
 @Entity
 @Table(name = "ROLES")
@@ -31,7 +29,7 @@ public class Role extends CommonEntity {
     private String name;
 
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="ROLE_AUTHORITIES",
             joinColumns = @JoinColumn(name="ROLE_ID"),

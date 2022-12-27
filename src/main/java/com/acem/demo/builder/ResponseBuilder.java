@@ -44,6 +44,20 @@ public class ResponseBuilder {
                 .statusCode(HttpServletResponse.SC_UNAUTHORIZED);
     }
 
+    public static Response unauthorizedAccess() {
+        return new Response()
+                .success(false)
+                .description(ResponseMessageConstant.UNAUTHORIZED_ACCESS)
+                .statusCode(HttpServletResponse.SC_UNAUTHORIZED);
+    }
+
+    public static Response unAuthorized(String description) {
+        return new Response()
+                .success(false)
+                .description(description)
+                .statusCode(HttpServletResponse.SC_UNAUTHORIZED);
+    }
+
     public static Response serverError() {
         return new Response()
                 .success(false)

@@ -53,14 +53,17 @@ public class AuthController {
 
             if (isPasswordMatched) {
                 Date issueDate = new Date();
-                Date expireDate = new Date(issueDate.getTime() + 60 * 60 * 1000);
+                Date expireDate = new Date(issueDate.getTime() + 1000 * 1000 * 60);
                 Map<String, String> claimsMap = new HashMap<>();
+                System.out.println("token issued: "+issueDate);
+                System.out.println("token expiry: "+expireDate);
                 claimsMap.put("email", user.getEmail());
+
                 String token = Jwts
                         .builder()
+                        .setClaims(claimsMap)
                         .setIssuedAt(issueDate)
                         .setExpiration(expireDate)
-                        .setClaims(claimsMap)
                         .signWith(secretKeySpec)
                         .compact();
 

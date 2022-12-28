@@ -6,6 +6,9 @@ import com.acem.demo.response.Response;
 import com.acem.demo.service.CourseService;
 import com.acem.demo.utils.CourseMapperUtil;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

@@ -1,51 +1,38 @@
 package com.acem.demo.request;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
-public class UserUpdateRequest {
+@Getter
+@Setter
+public class UserUpdateRequest implements Serializable {
 
+    @NotNull
     private Long id;
+
     @NotBlank
-    private String name;
+    private String firstName;
+
+    private String middleName;
+
+    @NotBlank
+    private String lastName;
+
     @NotBlank
     @Email
     private String email;
+
+    @NotBlank
+    private String password;
+
     @NotBlank
     private String contactNo;
 
-    public UserUpdateRequest() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getContactNo() {
-        return contactNo;
-    }
-
-    public void setContactNo(String contactNo) {
-        this.contactNo = contactNo;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @NotNull
+    private Long roleId;
 }

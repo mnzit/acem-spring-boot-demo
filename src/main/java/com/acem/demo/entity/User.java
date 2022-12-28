@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -45,6 +46,8 @@ public class User extends CommonEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<Authority> authorities = role.getAuthorities();
+        authorities.add(new Authority("ROL_" + role.getName()));
         return role.getAuthorities();
     }
 

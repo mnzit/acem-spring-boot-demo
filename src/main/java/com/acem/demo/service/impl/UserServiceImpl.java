@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
         user = userRepository.save(user);
         Response responseBody = null;
         try {
-            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.SAVED, user);
+            responseBody = ResponseBuilder.success(ResponseMessageConstant.Student.SAVED);
         } catch (Exception exception) {
             responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Student.NOT_SAVED);
         }

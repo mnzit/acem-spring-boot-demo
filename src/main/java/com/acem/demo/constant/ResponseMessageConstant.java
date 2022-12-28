@@ -41,6 +41,12 @@ public interface ResponseMessageConstant {
     }
 
     String SERVER_ERROR = "Server Error";
+    String UNAUTHORIZED = "Unauthorized";
+
+    String UNAUTHORIZED_ACCESS = "Unauthorized! You do not have permission to access this.";
+
+    String SESSION_EXPIRED = "Session expired! Please login again.";
+
     String INVALID_PATH_PARAMETER = "Not a valid request";
     String INVALID_REQUEST_BODY = "Not a valid request";
 

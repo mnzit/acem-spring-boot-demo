@@ -47,9 +47,7 @@ public class User extends CommonEntity implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<Authority> authorities = role.getAuthorities();
-        authorities.add(new Authority(role.getName()));
-
-        System.out.println(authorities);
+        authorities.add(new Authority("ROL_" + role.getName()));
         return role.getAuthorities();
     }
 

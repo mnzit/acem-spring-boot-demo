@@ -1,5 +1,6 @@
 package com.acem.demo.controller;
 
+import com.acem.demo.aspect.annotation.ExecutionTime;
 import com.acem.demo.builder.ResponseBuilder;
 import com.acem.demo.constant.SecurityConstant;
 import com.acem.demo.entity.User;
@@ -8,6 +9,7 @@ import com.acem.demo.request.AuthRequest;
 import com.acem.demo.response.Response;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@Slf4j
 @RestController
 public class AuthController {
 
@@ -38,10 +41,10 @@ public class AuthController {
         this.secretKeySpec = secretKeySpec;
     }
 
+    @ExecutionTime
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping("auth")
     public ResponseEntity<Response> login(@RequestBody @Validated AuthRequest request) {
-
         Optional<User> optionalUser = userRepository.findByEmail(request.getEmail());
 
         if (optionalUser.isPresent()) {
@@ -55,8 +58,8 @@ public class AuthController {
                 Date issueDate = new Date();
                 Date expireDate = new Date(issueDate.getTime() + 1000 * 1000 * 60);
                 Map<String, String> claimsMap = new HashMap<>();
-                System.out.println("token issued: "+issueDate);
-                System.out.println("token expiry: "+expireDate);
+                log.info("token issued: "+issueDate);
+                log.info("token expiry: "+expireDate);
                 claimsMap.put("email", user.getEmail());
 
                 String token = Jwts

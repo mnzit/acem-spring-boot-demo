@@ -3,22 +3,26 @@ package com.acem.demo.config;
 import com.acem.demo.dto.HolidayMap;
 import com.acem.demo.entity.Holiday;
 import com.acem.demo.repository.HolidayRepository;
+import com.acem.demo.service.impl.EmailServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.crypto.spec.SecretKeySpec;
 import java.util.List;
-@EnableScheduling
+
 @Configuration
+@EnableScheduling
 public class AppConfig {
 
     private HolidayRepository holidayRepository;
+    private EmailServiceImpl emailService;
 
-    public AppConfig(HolidayRepository holidayRepository) {
+    public AppConfig(HolidayRepository holidayRepository, EmailServiceImpl emailService) {
         this.holidayRepository = holidayRepository;
+        this.emailService = emailService;
     }
-
 
     @Bean
     public HolidayMap holidays() {
@@ -38,10 +42,12 @@ public class AppConfig {
     }
 
 
-//    @Scheduled(fixedDelay = 1000)
-//    public void scheduleFixedDelayTask() {
-//        System.out.println(
-//                "Fixed delay task - " + System.currentTimeMillis() / 1000);
-//    }
+    @Scheduled(cron = "0 * * ? * *") //every minute
+//    @Scheduled(cron = "0 0 12 1 * ?") //Every month on the 1st, at noon
+    public void scheduleHolidayEntityUpdate() {
+        System.out.println("Scheduled Task (Every Month) : Holiday entity updated");
+        emailService.sendSimpleMessage("byroxkdk71@gmail.com","attendance","attendance");
+    }
+
 
 }

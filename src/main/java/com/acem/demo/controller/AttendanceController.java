@@ -2,6 +2,7 @@ package com.acem.demo.controller;
 
 import com.acem.demo.request.AttendanceRequest;
 import com.acem.demo.request.AttendanceUpdateRequest;
+import com.acem.demo.request.mapper.AttendanceMapperUtil;
 import com.acem.demo.response.Response;
 import com.acem.demo.service.AttendanceService;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,7 @@ public class AttendanceController {
     }
 
     public ResponseEntity<Response> update(@Validated @RequestBody AttendanceUpdateRequest request){
-        return ResponseEntity.ok().body(null);
+        Response response = attendanceService.update(AttendanceMapperUtil.map(request));
+        return ResponseEntity.ok().body(response);
     }
 }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class InvokedMethodLoggingAspect {
-    @Around("@annotation(com.acem.demo.aspect.annotation.InvockedMethodLog)")
+    @Around("@annotation(com.acem.demo.aspect.annotation.InvokedMethodLog)")
     public Object methodNameLogger(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
 

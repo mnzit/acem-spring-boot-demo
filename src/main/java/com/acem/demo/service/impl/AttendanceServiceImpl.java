@@ -3,6 +3,7 @@ package com.acem.demo.service.impl;
 import com.acem.demo.builder.ResponseBuilder;
 import com.acem.demo.constant.ResponseMessageConstant;
 import com.acem.demo.entity.Attendance;
+import com.acem.demo.entity.Subject;
 import com.acem.demo.repository.AttendanceRepository;
 import com.acem.demo.request.AttendanceRequest;
 import com.acem.demo.response.Response;
@@ -11,6 +12,7 @@ import com.acem.demo.utils.holiday.HolidayUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,6 +46,19 @@ public class AttendanceServiceImpl implements AttendanceService {
             System.out.println("Exception: "+ exception.getMessage());
             return ResponseBuilder.failure(ResponseMessageConstant.Attendance.NOT_SAVED);
         }
+    }
+
+    @Override
+    public Response update(Attendance attendance) {
+        Optional<Attendance> optionalAttendance = attendanceRepository.findById(attendance.getId());
+        Response responseBody = null;
+        if (optionalAttendance.isPresent()) {
+            attendanceRepository.save(attendance);
+            responseBody = ResponseBuilder.success(ResponseMessageConstant.Attendance.UPDATED, attendance);
+        } else {
+            responseBody = ResponseBuilder.notFound(ResponseMessageConstant.Attendance.NOT_UPDATED);
+        }
+        return responseBody;
     }
 
 

@@ -1,7 +1,7 @@
 package com.acem.demo.controller;
 
 import com.acem.demo.aspect.annotation.ExecutionTime;
-import com.acem.demo.aspect.annotation.InvockedMethodLog;
+import com.acem.demo.aspect.annotation.InvokedMethodLog;
 import com.acem.demo.builder.ResponseBuilder;
 import com.acem.demo.constant.SecurityConstant;
 import com.acem.demo.entity.User;
@@ -41,7 +41,7 @@ public class AuthController {
         this.secretKeySpec = secretKeySpec;
     }
 
-    @InvockedMethodLog
+    @InvokedMethodLog
     @ExecutionTime
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping("auth")

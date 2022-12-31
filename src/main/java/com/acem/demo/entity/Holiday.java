@@ -3,6 +3,7 @@ package com.acem.demo.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -11,9 +12,15 @@ import java.util.Date;
 @Getter
 @Setter
 @Builder
+@ToString
 @AllArgsConstructor
 @Table(name = "HOLIDAYS")
-public class Holiday extends CommonEntity {
+public class Holiday implements Serializable {
+
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
 
     @Column(name = "TITLE")
     private String title;

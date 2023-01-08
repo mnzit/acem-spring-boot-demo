@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class UserMapper {
-    public UserListResponse map(User user){
+    public static UserListResponse map(User user){
         UserListResponse.UserListResponseBuilder userListResponseBuilder = UserListResponse
                 .builder()
                 .firstName(user.getName().getFirstName())

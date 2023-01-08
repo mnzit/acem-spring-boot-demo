@@ -2,8 +2,8 @@ server:
   port: 8081
 logging:
   level:
-    org.springframework.web: DEBUG
-    org.hibernate: DEBUG
+    org.springframework.web: INFO
+    org.hibernate: INFO
 spring:
   datasource:
     url: ${url}
@@ -17,6 +17,7 @@ spring:
       ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    open-in-view: false
   mail:
     host: smtp.gmail.com
     port: 587
@@ -26,4 +27,5 @@ spring:
       mail:
         smtp:
           auth: true
-          starttls: true
+          starttls:
+            enable: true

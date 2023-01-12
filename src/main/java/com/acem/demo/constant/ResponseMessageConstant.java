@@ -13,7 +13,6 @@ public interface ResponseMessageConstant {
         String NOT_DELETED = "Student not deleted";
         String DELETED = "Student deleted successfully";
     }
-
     interface Course {
         String ONE = "Course fetched successfully";
         String ALL = "Courses fetched successfully";
@@ -42,6 +41,12 @@ public interface ResponseMessageConstant {
     }
 
     String SERVER_ERROR = "Server Error";
+    String UNAUTHORIZED = "Unauthorized";
+
+    String UNAUTHORIZED_ACCESS = "Unauthorized! You do not have permission to access this.";
+
+    String SESSION_EXPIRED = "Session expired! Please login again.";
+
     String INVALID_PATH_PARAMETER = "Not a valid request";
     String INVALID_REQUEST_BODY = "Not a valid request";
 
@@ -55,6 +60,18 @@ public interface ResponseMessageConstant {
         String NOT_UPDATED = "Subject not updated";
         String NOT_DELETED = "Subject not deleted";
         String DELETED = "Subject deleted successfully";
+    }
+
+    interface Holiday {
+        String ONE = "Holiday fetched successfully";
+        String ALL = "Holidays fetched successfully";
+        String NOT_FOUND = "Holidays not found";
+        String SAVED = "Holiday saved successfully";
+        String UPDATED = "Holiday updated successfully";
+        String NOT_SAVED = "Holiday not saved";
+        String NOT_UPDATED = "Holiday not updated";
+        String NOT_DELETED = "Holiday not deleted";
+        String DELETED = "Holiday deleted successfully";
     }
 
 }

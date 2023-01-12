@@ -1,9 +1,18 @@
 package com.acem.demo.request;
 
-import com.acem.demo.entity.enums.AttendanceStatus;
+import com.acem.demo.entity.enums.AttendanceState;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class AttendanceRequest {
+import java.io.Serializable;
+
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class AttendanceRequest implements Serializable {
 
     private Long id;
-    private AttendanceStatus status;
+    private AttendanceState state;
 }

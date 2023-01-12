@@ -1,14 +1,11 @@
 package com.acem.demo.entity;
 
-import com.acem.demo.entity.enums.AttendanceStatus;
+import com.acem.demo.entity.enums.AttendanceState;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import java.util.Date;
 
 
 @Entity
@@ -22,10 +19,13 @@ public class Attendance extends CommonEntity {
     @JoinColumn(name = "STUDENT_ID", referencedColumnName = "ID")
     private User user;
 
-    @Column(name = "STATUS", columnDefinition = "VARCHAR(100) DEFAULT 'ABSENT'")
-    private AttendanceStatus status;
+    @Column(name = "STATE", columnDefinition = "VARCHAR(100) DEFAULT 'ABSENT'")
+    @Enumerated(EnumType.STRING)
+    private AttendanceState state;
 
-
-
+    public Attendance(Long id, AttendanceState state) {
+        this.user = new User(id);
+        this.state = state;
+    }
 }
 

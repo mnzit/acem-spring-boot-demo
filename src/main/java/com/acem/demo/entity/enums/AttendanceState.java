@@ -1,6 +1,6 @@
 package com.acem.demo.entity.enums;
 
-public enum AttendanceStatus {
+public enum AttendanceState {
     PRESENT,
     ABSENT,
     SICK,

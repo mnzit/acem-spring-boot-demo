@@ -37,6 +37,27 @@ public class ResponseBuilder {
                 .statusCode(HttpServletResponse.SC_BAD_REQUEST);
     }
 
+    public static Response unAuthorized() {
+        return new Response()
+                .success(false)
+                .description(ResponseMessageConstant.UNAUTHORIZED)
+                .statusCode(HttpServletResponse.SC_UNAUTHORIZED);
+    }
+
+    public static Response unauthorizedAccess() {
+        return new Response()
+                .success(false)
+                .description(ResponseMessageConstant.UNAUTHORIZED_ACCESS)
+                .statusCode(HttpServletResponse.SC_UNAUTHORIZED);
+    }
+
+    public static Response unAuthorized(String description) {
+        return new Response()
+                .success(false)
+                .description(description)
+                .statusCode(HttpServletResponse.SC_UNAUTHORIZED);
+    }
+
     public static Response serverError() {
         return new Response()
                 .success(false)
@@ -57,6 +78,13 @@ public class ResponseBuilder {
                 .error(error)
                 .description(ResponseMessageConstant.INVALID_REQUEST_BODY)
                 .statusCode(HttpServletResponse.SC_BAD_REQUEST);
+    }
+
+    public static Response successIdResponse(String description, Long data) {
+        return new Response()
+                .success(true)
+                .description(description)
+                .statusCode(HttpServletResponse.SC_OK);
     }
 
 }

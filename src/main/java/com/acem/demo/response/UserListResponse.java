@@ -1,13 +1,15 @@
 package com.acem.demo.response;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserListResponse implements Serializable {
 
     private String firstName;

@@ -1,6 +1,7 @@
 package com.acem.demo.controller;
 
 import com.acem.demo.aspect.annotation.ExecutionTime;
+import com.acem.demo.aspect.annotation.InvokedMethodLog;
 import com.acem.demo.builder.ResponseBuilder;
 import com.acem.demo.constant.SecurityConstant;
 import com.acem.demo.entity.User;
@@ -8,7 +9,6 @@ import com.acem.demo.repository.UserRepository;
 import com.acem.demo.request.AuthRequest;
 import com.acem.demo.response.Response;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -41,6 +41,7 @@ public class AuthController {
         this.secretKeySpec = secretKeySpec;
     }
 
+    @InvokedMethodLog
     @ExecutionTime
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @RequestMapping("auth")
@@ -50,7 +51,9 @@ public class AuthController {
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             String password = request.getPassword();
+            System.out.println("Request Password: "+ password);
             String encodedPassword = user.getPassword();
+            System.out.println("Encoded Password: "+ encodedPassword);
 
             boolean isPasswordMatched = passwordEncoder.matches(password, encodedPassword);
 
